@@ -260,7 +260,7 @@ void chassis_behaviour_mode_set(chassis_move_t *chassis_move_mode)
     //当云台在某些模式下，像初始化， 底盘不动
     if (gimbal_cmd_to_chassis_stop())
     {
-        chassis_behaviour_mode = CHASSIS_NO_MOVE;
+        //chassis_behaviour_mode = CHASSIS_NO_MOVE;
     }
 
 
@@ -270,27 +270,27 @@ void chassis_behaviour_mode_set(chassis_move_t *chassis_move_mode)
 
     //accord to beheviour mode, choose chassis control mode
     //根据行为模式选择一个底盘控制模式
-    if (chassis_behaviour_mode == CHASSIS_ZERO_FORCE)
+    if (chassis_behaviour_mode == CHASSIS_ZERO_FORCE)//无力软骨模式
     {
         chassis_move_mode->chassis_mode = CHASSIS_VECTOR_RAW; 
     }
-    else if (chassis_behaviour_mode == CHASSIS_NO_MOVE)
+    else if (chassis_behaviour_mode == CHASSIS_NO_MOVE)//无力软骨模式
     {
         chassis_move_mode->chassis_mode = CHASSIS_VECTOR_NO_FOLLOW_YAW; 
     }
-    else if (chassis_behaviour_mode == CHASSIS_INFANTRY_FOLLOW_GIMBAL_YAW)
+    else if (chassis_behaviour_mode == CHASSIS_INFANTRY_FOLLOW_GIMBAL_YAW)//步兵跟随云台模式（车辆无法旋转模式，PID发散）
     {
         chassis_move_mode->chassis_mode = CHASSIS_VECTOR_FOLLOW_GIMBAL_YAW; 
     }
-    else if (chassis_behaviour_mode == CHASSIS_ENGINEER_FOLLOW_CHASSIS_YAW)
+    else if (chassis_behaviour_mode == CHASSIS_ENGINEER_FOLLOW_CHASSIS_YAW)//工程跟随云台模式（车辆可以旋转模式，PID发散）
     {
         chassis_move_mode->chassis_mode = CHASSIS_VECTOR_FOLLOW_CHASSIS_YAW;
     }
-    else if (chassis_behaviour_mode == CHASSIS_NO_FOLLOW_YAW)
+    else if (chassis_behaviour_mode == CHASSIS_NO_FOLLOW_YAW)//我最爱的闭环控制模式，还有什么比精准操控的电机更解压的呢？
     {
         chassis_move_mode->chassis_mode = CHASSIS_VECTOR_NO_FOLLOW_YAW;
     }
-    else if (chassis_behaviour_mode == CHASSIS_OPEN)
+    else if (chassis_behaviour_mode == CHASSIS_OPEN)//开环控制模式，体验如同电钻一般的快感
     {
         chassis_move_mode->chassis_mode = CHASSIS_VECTOR_RAW;
     }
