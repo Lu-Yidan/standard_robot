@@ -57,7 +57,10 @@
 
 #define DETECT_TASK_INIT_TIME 57
 #define DETECT_CONTROL_TIME 10
-
+/**
+ *  鲁一丹在这里加这么了一行，为的只是让车在没有装持球（云台）电机的时候不要太吵
+ */
+#define DETECT_WITHOUT_GIMBAL_MOTOR 5
 //错误码以及对应设备顺序
 enum errorList
 {

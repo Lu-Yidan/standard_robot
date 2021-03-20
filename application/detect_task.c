@@ -274,8 +274,8 @@ static void detect_init(uint32_t time)
             {10, 10, 7},    //rm imu
             {100, 100, 1},  //oled
         };
-
-    for (uint8_t i = 0; i < ERROR_LIST_LENGHT; i++)
+    //这里本来应该是ERROR_LIST_LENGHT，DETECT_WITHOUT_GIMBAL_MOTOR是为了让它安静一会
+    for (uint8_t i = 0; i < DETECT_WITHOUT_GIMBAL_MOTOR; i++)
     {
         error_list[i].set_offline_time = set_item[i][0];
         error_list[i].set_online_time = set_item[i][1];
